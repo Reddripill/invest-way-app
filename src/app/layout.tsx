@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Raleway } from "next/font/google";
-import Header from "./components/layout/root/header/Header";
+import Header from "@/components/layout/root/header/Header";
 import "./globals.css";
 
 export const metadata: Metadata = {

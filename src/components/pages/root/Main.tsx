@@ -1,4 +1,4 @@
-import { cardList } from "@/app/constants/cards";
+import { cardList } from "@/constants/cards";
 import Image from "next/image";
 import React from "react";
 import Card from "../../UI/Card";
@@ -58,6 +58,7 @@ const Main = () => {
          </section>
          <section>
             <div className="container">
+               <h2>Сравнение стратегий</h2>
                <Table />
             </div>
          </section>

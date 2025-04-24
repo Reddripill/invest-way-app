@@ -6,7 +6,7 @@ import {
    flexRender,
    createColumnHelper,
 } from "@tanstack/react-table";
-import { data, InvestmentData } from "@/app/constants/table";
+import { data, InvestmentData } from "@/constants/table";
 import cn from "classnames";
 
 const columnHelper = createColumnHelper<InvestmentData>();
@@ -38,20 +38,25 @@ export default function Table() {
    });
 
    return (
-      <div className="overflow-x-auto bg-white rounded-main py-4">
+      <div className="overflow-x-auto bg-white rounded-main">
          <table className="min-w-full">
             <thead>
                {table.getHeaderGroups().map((headerGroup) => (
-                  <tr key={headerGroup.id}>
+                  <tr
+                     key={headerGroup.id}
+                     className="border-b border-accent/10"
+                  >
                      {headerGroup.headers.map((header) => (
                         <th
                            key={header.id}
-                           className="px-4 py-2 first:pl-6 last:pr-6 text-left"
+                           className="px-4  first:pl-6 last:pr-6 text-left"
                         >
-                           {flexRender(
-                              header.column.columnDef.header,
-                              header.getContext()
-                           )}
+                           <div className="flex items-center min-h-20">
+                              {flexRender(
+                                 header.column.columnDef.header,
+                                 header.getContext()
+                              )}
+                           </div>
                         </th>
                      ))}
                   </tr>
@@ -71,10 +76,12 @@ export default function Table() {
                               "px-4 py-2 first:pl-6 last:pr-6"
                            )}
                         >
-                           {flexRender(
-                              cell.column.columnDef.cell,
-                              cell.getContext()
-                           )}
+                           <div className="flex items-center min-h-20">
+                              {flexRender(
+                                 cell.column.columnDef.cell,
+                                 cell.getContext()
+                              )}
+                           </div>
                         </td>
                      ))}
                   </tr>

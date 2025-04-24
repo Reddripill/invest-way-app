@@ -1,19 +1,20 @@
-@reference "../../../../globals.css";
+@reference "../../../../app/globals.css";
 
 .header {
-   @apply md:h-28 h-20 w-full;
+   @apply md:h-28 h-16 w-full;
 }
 
 .header._label {
-   @apply h-20;
+   @apply md:h-20;
 }
 
 .wrapper {
-   @apply fixed top-0 left-0 w-full md:h-28 h-20 z-20 transition-all duration-200 bg-transparent;
+   @apply fixed top-0 left-0 w-full md:h-28 h-16 z-20 transition-all duration-200 bg-transparent
+   max-md:bg-white max-md:shadow-header;
 }
 
 .wrapper._label {
-   @apply bg-white shadow-header h-20;
+   @apply bg-white shadow-header md:h-20;
 }
 
 .nav {

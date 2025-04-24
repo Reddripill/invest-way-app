@@ -1,5 +1,5 @@
 import React from "react";
-import { EstateIcon, NFTIcon, StockIcon } from "../svgs";
+import { EstateIcon, NFTIcon, StockIcon } from "@/svgs";
 
 export interface ICard {
    title: string;
