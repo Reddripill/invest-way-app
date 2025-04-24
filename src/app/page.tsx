@@ -1,3 +1,5 @@
+import Main from "./components/pages/root/Main";
+
 export default function Home() {
-   return <div>Hi NextJS</div>;
+   return <Main />;
 }
