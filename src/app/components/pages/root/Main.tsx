@@ -2,6 +2,7 @@ import { cardList } from "@/app/constants/cards";
 import Image from "next/image";
 import React from "react";
 import Card from "../../UI/Card";
+import Table from "../../UI/Table";
 
 const Main = () => {
    return (
@@ -53,6 +54,11 @@ const Main = () => {
                      </div>
                   ))}
                </div>
+            </div>
+         </section>
+         <section>
+            <div className="container">
+               <Table />
             </div>
          </section>
       </>
