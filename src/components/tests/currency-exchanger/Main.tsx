@@ -1,44 +1,40 @@
 "use client";
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import { currencies } from "@/constants/currencies";
 import { MenuItem, Select, SelectChangeEvent } from "@mui/material";
 import { SetStateType } from "@/types/main.types";
 import { Repeat } from "lucide-react";
-// import { formatPrice } from "@/utils/formatPrice";
 
 const currencyLabels = Object.keys(currencies) as (keyof typeof currencies)[];
 
 const API_KEY = "0d7e64e395e59cff4e1ee12337b04241";
 
-export default function CurrencyExchangerMain() {
+const CurrencyExchangerMain = () => {
    const [fromCurrency, setFromCurrency] =
       useState<keyof typeof currencies>("USD");
    const [toCurrency, setToCurrency] = useState<keyof typeof currencies>("RUB");
    const [fromRate, setFromRate] = useState<string | number>(0);
    const [toRate, setToRate] = useState<string | number>(0);
 
-   const fetchRate = useCallback(
-      async (
-         amount: number | string,
-         setAmount: SetStateType<string | number>
-      ) => {
-         try {
-            const url = `https://api.exchangerate.host/convert?access_key=${API_KEY}&from=${fromCurrency}&to=${toCurrency}&amount=${amount}`;
-            const res = await fetch(url);
-            const data = await res.json();
-            if (data.success) {
-               setAmount(parseFloat(data.result));
-            } else {
-               console.error("Ошибка API:", data);
-               return null;
-            }
-         } catch (err) {
-            console.error("Ошибка при запросе к FCSAPI:", err);
+   const fetchRate = async (
+      amount: number | string,
+      setAmount: SetStateType<string | number>
+   ) => {
+      try {
+         const url = `https://api.exchangerate.host/convert?access_key=${API_KEY}&from=${fromCurrency}&to=${toCurrency}&amount=${amount}`;
+         const res = await fetch(url);
+         const data = await res.json();
+         if (data.success) {
+            setAmount(parseFloat(data.result));
+         } else {
+            console.error("Ошибка API:", data);
             return null;
          }
-      },
-      [fromCurrency, toCurrency]
-   );
+      } catch (err) {
+         console.error("Ошибка при запросе к FCSAPI:", err);
+         return null;
+      }
+   };
 
    const handleChange = (
       e: React.ChangeEvent<HTMLInputElement>,
@@ -87,21 +83,19 @@ export default function CurrencyExchangerMain() {
          <div className="flex-1/2 grow-0">
             <Select
                value={fromCurrency}
-               onChange={
-                  (e) =>
-                     changeSelectHandler(
-                        e,
-                        setFromCurrency,
-                        setToCurrency,
-                        fromCurrency,
-                        toCurrency
-                     )
-                  // setFromCurrency(e.target.value as keyof typeof currencies)
+               onChange={(e) =>
+                  changeSelectHandler(
+                     e,
+                     setFromCurrency,
+                     setToCurrency,
+                     fromCurrency,
+                     toCurrency
+                  )
                }
                variant="standard"
                disableUnderline
                sx={{
-                  borderBottom: "2px solid #429c8c", // синяя нижняя граница
+                  borderBottom: "2px solid #429c8c",
                   borderRadius: 0,
                   paddingY: 0.5,
                }}
@@ -109,7 +103,7 @@ export default function CurrencyExchangerMain() {
                   PaperProps: {
                      sx: {
                         marginTop: "8px",
-                        maxHeight: "300px", // ограничение по высоте
+                        maxHeight: "300px",
                      },
                   },
                }}
@@ -147,16 +141,14 @@ export default function CurrencyExchangerMain() {
          <div className="flex-1/2 grow-0">
             <Select
                value={toCurrency}
-               onChange={
-                  (e) =>
-                     changeSelectHandler(
-                        e,
-                        setToCurrency,
-                        setFromCurrency,
-                        toCurrency,
-                        fromCurrency
-                     )
-                  // setFromCurrency(e.target.value as keyof typeof currencies)
+               onChange={(e) =>
+                  changeSelectHandler(
+                     e,
+                     setToCurrency,
+                     setFromCurrency,
+                     toCurrency,
+                     fromCurrency
+                  )
                }
                variant="standard"
                disableUnderline
@@ -200,4 +192,6 @@ export default function CurrencyExchangerMain() {
          </div>
       </div>
    );
-}
+};
+
+export default CurrencyExchangerMain;

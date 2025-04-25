@@ -1,6 +1,6 @@
 import React from "react";
-import { ICard } from "@/app/constants/cards";
 import { MoveRight } from "lucide-react";
+import { ICard } from "@/constants/cards";
 
 const Card = ({ title, logo: Logo, desctiption, options }: ICard) => {
    return (

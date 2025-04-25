@@ -1,5 +1,10 @@
-import CurrencyExchangerMain from "@/components/pages/currency-exchanger/Main";
 import React from "react";
+import CurrencyExchangerMain from "@/components/tests/currency-exchanger/Main";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+   title: "Конвертация валюты",
+};
 
 const CurrencyExchangerPage = () => {
    return (
