@@ -10,7 +10,7 @@ export const useIntersectionObs = (
       const configObserver: IntersectionObserverInit = {
          root: null,
          rootMargin: "0px",
-         threshold: [0],
+         threshold: 1,
       };
       const observer = new IntersectionObserver((entries) => {
          setIsIntersecting(entries[0].isIntersecting);

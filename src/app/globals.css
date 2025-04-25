@@ -6,6 +6,8 @@
    --color-accent: #429c8c;
    --radius-main: 20px;
 
+   --font-roboto: "Roboto";
+
    --shadow-header: 0 4px 8px 0 rgba(0 0 0 0.04);
 }
 
@@ -33,6 +35,11 @@
 
 @layer utilities {
    .container {
-      @apply w-full max-w-[1470px] px-[15px] mx-auto;
+      @apply w-full max-w-[1470px] px-[15px] mx-auto overflow-x-hidden;
+   }
+   .no-spinner::-webkit-inner-spin-button,
+   .no-spinner::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
    }
 }
