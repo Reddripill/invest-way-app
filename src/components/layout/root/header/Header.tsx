@@ -2,10 +2,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { useIntersectionObs } from "@/hooks/useIntersectionObs";
-import { LogoIcon } from "@/svgs";
 import styles from "./Header.module.css";
 import cn from "classnames";
 import { endopointList } from "@/constants/endpoints";
+import LogoIcon from "@/components/icons/LogoIcon";
 
 const Header = () => {
    const headerRef = useRef<HTMLElement>(null);
@@ -38,7 +38,9 @@ const Header = () => {
             <div className="container h-full">
                <div className="flex justify-between items-center h-full gap-x-8">
                   <div className="flex items-center gap-x-4 text-3xl font-bold tracking-wider">
-                     <LogoIcon className="size-9 text-accent" />
+                     <div className="text-4xl text-accent">
+                        <LogoIcon />
+                     </div>
                      <Link href="/">InvestWay</Link>
                   </div>
                   <nav

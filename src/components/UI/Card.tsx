@@ -2,11 +2,13 @@ import React from "react";
 import { MoveRight } from "lucide-react";
 import { ICard } from "@/constants/cards";
 
-const Card = ({ title, logo: Logo, desctiption, options }: ICard) => {
+const Card = ({ title, desctiption, options, logo: Logo }: ICard) => {
    return (
       <div className="h-full w-full sm:p-8 p-4 bg-accent rounded-main flex flex-col text-white">
          <div className="text-center sm:mb-8 mb-6">
-            <Logo className="sm:size-[130px] size-[110px] mx-auto mb-6" />
+            <div className="sm:text-[130px] text-[110px] mb-6 flex justify-center">
+               <Logo />
+            </div>
             <h3 className="max-sm:text-2xl">{title}</h3>
          </div>
          <div className="grow mb-8">
