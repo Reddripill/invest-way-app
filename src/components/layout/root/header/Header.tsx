@@ -11,6 +11,9 @@ const Header = () => {
    const headerRef = useRef<HTMLElement>(null);
    const [isOpen, setIsOpen] = useState(false);
    const isIntersecting = useIntersectionObs(headerRef);
+   const clickHandler = () => {
+      setIsOpen(false);
+   };
    useEffect(() => {
       if (isOpen) {
          document.body.classList.add("_lock-scroll");
@@ -37,28 +40,43 @@ const Header = () => {
          >
             <div className="container h-full">
                <div className="flex justify-between items-center h-full gap-x-8">
-                  <div className="flex items-center gap-x-4 text-3xl font-bold tracking-wider">
+                  <Link
+                     href="/"
+                     className="flex items-center gap-x-4 text-3xl font-bold tracking-wider"
+                  >
                      <div className="text-4xl text-accent">
                         <LogoIcon />
                      </div>
-                     <Link href="/">InvestWay</Link>
-                  </div>
+                     <div>InvestWay</div>
+                  </Link>
                   <nav
                      className={cn(styles.nav, {
                         [styles["_open"]]: isOpen,
                      })}
                   >
-                     <ul className="flex justify-between items-center gap-x-4 font-medium">
-                        <li className="lg:text-xl text-lg font-medium text-black transition-colors duration-300 hover:text-accent">
+                     <ul className={styles["nav-list"]}>
+                        <li
+                           className={styles["nav-item"]}
+                           onClick={clickHandler}
+                        >
                            <Link href="/">Главная</Link>
                         </li>
-                        <li className="lg:text-xl text-lg font-medium text-black transition-colors duration-300 hover:text-accent">
+                        <li
+                           className={styles["nav-item"]}
+                           onClick={clickHandler}
+                        >
                            <Link href="/">Новости</Link>
                         </li>
-                        <li className="lg:text-xl text-lg font-medium text-black transition-colors duration-300 hover:text-accent">
+                        <li
+                           className={styles["nav-item"]}
+                           onClick={clickHandler}
+                        >
                            <Link href="/">Калькулятор вкладов</Link>
                         </li>
-                        <li className="lg:text-xl text-lg font-medium text-black transition-colors duration-300 hover:text-accent">
+                        <li
+                           className={styles["nav-item"]}
+                           onClick={clickHandler}
+                        >
                            <Link href={endopointList.currency}>
                               Курсы валют
                            </Link>

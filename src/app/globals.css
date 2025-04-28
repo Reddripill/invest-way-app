@@ -16,6 +16,9 @@
    body {
       @apply h-full w-full bg-back;
    }
+   body._lock-scroll {
+      @apply overflow-hidden;
+   }
    h1 {
       @apply font-bold lg:text-5xl sm:text-4xl text-3xl md:mb-16 mb-8;
    }
